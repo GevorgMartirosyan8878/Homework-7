@@ -57,8 +57,11 @@ module.exports.getUsers = function (req, res) {
 }
 
 module.exports.getCurrentUser = function (req, res) {
+    const id = +req.params.id
     res.status(200);
-    res.send(users.find(user => user.id === +req.params.id))
+    const user = users.find(user => user.id === id)
+
+    res.send(user === undefined ? `please enter the correct user id, there is no user with id ${id}` : user)
 }
 
 module.exports.addNewUser = function (req, res) {
