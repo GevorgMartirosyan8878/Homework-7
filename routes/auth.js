@@ -7,11 +7,10 @@ router.get('/', controller.getUsers)
 
 router.get('/:id', controller.getCurrentUser)
 
-router.post('/:id', bodyParser, controller.addNewUser)
+router.post('/', bodyParser, controller.addNewUser)
 
 router.put('/:id', bodyParser, controller.changeCurrentUser)
 
 router.delete('/:id', bodyParser, controller.deleteCurrentUser)
-
 
 module.exports = router;

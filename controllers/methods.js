@@ -64,7 +64,7 @@ module.exports.getCurrentUser = function (req, res) {
 module.exports.addNewUser = function (req, res) {
     res.status(200);
     const data = req.body;
-    data.id = users.length + 1;
+    data.id = users[users.length -1].id + 1;
 
     users.push(data)
     res.send(users)
@@ -92,12 +92,5 @@ module.exports.deleteCurrentUser = function (req, res) {
 // function helper
 function deleteUser(id) {
     id = id - 1
-    const deletedItem = users.splice(id, 1);
-
-    users.forEach(user => {
-        if (user.id > id) {
-            user.id = user.id - 1
-        }
-    })
-    return deletedItem
+    return users.splice(id, 1);
 }
